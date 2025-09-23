@@ -2,206 +2,242 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 Feliz Cumpleaños Vale 🎂</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-            text-align: center;
-            padding: 20px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎉 Feliz Cumpleaños Vale 🎂</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      text-align: center;
+      padding: 20px;
+    }
 
-        .card {
-            background: white;
-            padding: 20px;
-            margin: 20px auto;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-        }
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+    }
 
-        h1 {
-            color: #e91e63;
-        }
+    h1 {
+      color: #e91e63;
+    }
 
-        .btn {
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
-            color: white;
-        }
+    .btn {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+      color: white;
+    }
 
-        .celebrar {
-            background-color: #ff4081;
-        }
+    .celebrar {
+      background-color: #ff4081;
+    }
 
-        .celebrar:hover {
-            background-color: #e91e63;
-        }
+    .celebrar:hover {
+      background-color: #e91e63;
+    }
 
-        .descargar {
-            background-color: #2196f3;
-        }
+    .descargar {
+      background-color: #2196f3;
+    }
 
-        .descargar:hover {
-            background-color: #1976d2;
-        }
+    .descargar:hover {
+      background-color: #1976d2;
+    }
 
-        /* Ruleta */
-        .ruleta-container {
-            margin: 30px auto;
-            width: 250px;
-            height: 250px;
-            position: relative;
-        }
+    /* Ruleta */
+    .ruleta-container {
+      margin: 30px auto;
+      width: 250px;
+      height: 250px;
+      position: relative;
+    }
 
-        .ruleta {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 5px solid #333;
-            background: conic-gradient(#ffeb3b 0deg 90deg,
-                    /* Helado */
-                    #ffcdd2 90deg 180deg,
-                    /* Cine */
-                    #c8e6c9 180deg 270deg,
-                    /* Pasión */
-                    #bbdefb 270deg 360deg
-                    /* Regalo */
-                );
-            transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
-        }
+    .ruleta {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 5px solid #333;
+      background: conic-gradient(
+        #ffeb3b 0deg 90deg,
+        #ffcdd2 90deg 180deg,
+        #c8e6c9 180deg 270deg,
+        #bbdefb 270deg 360deg
+      );
+      transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+      position: relative;
+    }
 
-        .flecha {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 30px solid red;
-            /* apunta hacia abajo */
-        }
+    .flecha {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 30px solid red;
+    }
 
-        .opcion {
-            position: absolute;
-            width: 50%;
-            left: 50%;
-            top: 50%;
-            transform-origin: left center;
-            font-size: 14px;
-            font-weight: bold;
-        }
+    /* Opciones dentro de las casillas (números) */
+    .opcion {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: 0 0;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
 
-        .opcion span {
-            display: inline-block;
-            transform: translate(-50%, -50%);
-        }
+    .op1 {
+      transform: rotate(45deg) translate(80px) rotate(-45deg);
+    }
 
-        .btn-ruleta {
-            background-color: #ff4081;
-            margin-top: 20px;
-        }
+    .op2 {
+      transform: rotate(135deg) translate(80px) rotate(-135deg);
+    }
 
-        .resultado {
-            margin-top: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #e91e63;
-        }
-    </style>
+    .op3 {
+      transform: rotate(225deg) translate(80px) rotate(-225deg);
+    }
+
+    .op4 {
+      transform: rotate(315deg) translate(80px) rotate(-315deg);
+    }
+
+    .btn-ruleta {
+      background-color: #ff4081;
+      margin-top: 20px;
+    }
+
+    .resultado {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #e91e63;
+    }
+
+    /* Lista de premios */
+    .premios {
+      text-align: left;
+      margin-top: 15px;
+      font-size: 15px;
+    }
+
+    .premios ul {
+      padding-left: 20px;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="card" id="felicitacion">
+    <h1>¡Feliz cumpleaños, Hermanita! 🎉</h1>
+    <p>Que tu día esté lleno de risas, abrazos y sorpresas bonitas. 💖</p>
+    <div style="font-size: 50px;">🎂</div>
+    <p>Te deseo un año lleno de éxitos, salud y momentos inolvidables. 🎁✨</p>
+    <button class="btn celebrar" onclick="alert('🎊 ¡A celebrar este día especial! 🎊')">🥳 Celebrar</button>
+    <button class="btn descargar" onclick="descargarPNG()">⬇️ Descargar PNG</button>
+  </div>
 
-    <div class="card" id="felicitacion">
-        <h1>¡Feliz cumpleaños, Valeria! 🎉</h1>
-        <p>Que tu día esté lleno de risas, abrazos y sorpresas bonitas. 💖</p>
-        <div style="font-size: 50px;">🎂</div>
-        <p>Te deseo un año lleno de éxitos, salud y momentos inolvidables. 🎁✨</p>
-        <button class="btn celebrar" onclick="alert('🎊 ¡A celebrar este día especial! 🎊')">🥳 Celebrar</button>
-        <button class="btn descargar" onclick="descargarPNG()">⬇️ Descargar PNG</button>
+  <div class="card">
+    <div class="ruleta-container">
+      <div class="flecha"></div>
+      <div class="ruleta" id="ruleta">
+        <div class="opcion op1">1</div>
+        <div class="opcion op2">2</div>
+        <div class="opcion op3">3</div>
+        <div class="opcion op4">4</div>
+      </div>
     </div>
+    <button id="ruletaBtn" class="btn btn-ruleta" onclick="girarRuleta()">🎰 Girar Ruleta</button>
+    <div class="resultado" id="resultado"></div>
 
-    <div class="card">
-        <div class="ruleta-container">
-            <div class="flecha"></div>
-            <div class="ruleta" id="ruleta">
-                <!-- etiquetas de texto -->
-                <div class="opcion" style="transform: rotate(45deg) translate(100px) rotate(-45deg);">
-                    <span>🧦 Ropa</span>
-                </div>
-                <div class="opcion" style="transform: rotate(135deg) translate(100px) rotate(-135deg);">
-                    <span>🎬 Cine: Kimetsu Noyaiba</span>
-                </div>
-                <div class="opcion" style="transform: rotate(225deg) translate(100px) rotate(-225deg);">
-                    <span>🔥 Nada,nadita</span>
-                </div>
-                <div class="opcion" style="transform: rotate(315deg) translate(100px) rotate(-315deg);">
-                    <span>🍦 Helado</span>
-                </div>
-            </div>
-        </div>
-        <button id="ruletaBtn" class="btn btn-ruleta" onclick="girarRuleta()">🎰 Girar Ruleta</button>
-        <div class="resultado" id="resultado"></div>
+    <!-- Lista de premios -->
+    <div class="premios">
+      <h3>🎁 Premios</h3>
+      <ul>
+        <li><b>1:</b> 🎬 Noche de cine: Kimetsu no Yaiba</li>
+        <li><b>2:</b> 🧦 Una prenda de ropa</li>
+        <li><b>3:</b> 😭 Nada, nadita 😭</li>
+        <li><b>4:</b> 🍦 Un helado en Manizales</li>
+      </ul>
     </div>
+  </div>
 
-    <script>
-        function descargarPNG() {
-            html2canvas(document.getElementById("felicitacion")).then(canvas => {
-                let link = document.createElement("a");
-                link.download = "felicitacion_valeria.png";
-                link.href = canvas.toDataURL();
-                link.click();
-            });
-        }
+  <script>
+    let intentos = 0; // contador de giros
 
-        function girarRuleta() {
-            const ruleta = document.getElementById("ruleta");
-            const resultado = document.getElementById("resultado");
-            const ruletaBtn = document.getElementById("ruletaBtn");
+    function descargarPNG() {
+      html2canvas(document.getElementById("felicitacion")).then(canvas => {
+        let link = document.createElement("a");
+        link.download = "felicitacion_valeria.png";
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
 
-            const sectores = ['Helado', 'Cine', 'Pasion', 'Regalo'];
-            const targetName = 'Helado';
-            const targetIndex = sectores.indexOf(targetName);
-            const n = sectores.length;
+    function girarRuleta() {
+      const ruleta = document.getElementById("ruleta");
+      const resultado = document.getElementById("resultado");
+      const ruletaBtn = document.getElementById("ruletaBtn");
 
-            const sectorAngle = 360 / n;
-            const centerOfTarget = targetIndex * sectorAngle + sectorAngle / 2;
-            const desiredPointerAngle = 270; // flecha arriba (12:00)
+      const sectores = [1, 2, 3, 4];
+      const premioTextos = {
+        1: "🎬 ¡Ganaste una Noche de cine el próximo jueves 25 de Septiembre en la noche! 📽️",
+        2: "🧦 ¡Ganaste una prenda de ropa! 👕",
+        3: "😭 Nada, nadita 😭 ¡Será la próxima vez!",
+        4: "🍦 ¡Ganaste un Helado en Manizales! 🍦"
+      };
 
-            const vueltas = 5 + Math.floor(Math.random() * 2); // 5-6 vueltas
-            const finalRotation = vueltas * 360 + (desiredPointerAngle - centerOfTarget);
+      if (intentos >= 3) {
+        resultado.textContent = "🚫 Ya no tienes más intentos.";
+        return;
+      }
 
-            ruletaBtn.disabled = true;
-            ruletaBtn.style.opacity = 0.6;
-            resultado.textContent = '';
+      intentos++;
 
-            ruleta.style.transition = 'transform 4s cubic-bezier(0.33,1,0.68,1)';
-            ruleta.style.transform = `rotate(${finalRotation}deg)`;
+      // Definir qué premio toca según el intento
+      let ganador;
+      if (intentos === 1 || intentos === 2) {
+        ganador = 3; // siempre "Nada"
+      } else if (intentos === 3) {
+        ganador = 1; // siempre "Cine"
+      }
 
-            setTimeout(() => {
-                resultado.innerHTML = " ¡Ganaste una Noche de cien! <br>📸 Envía este pantallazo a <b> YOUR BROTHER</b> para reclamar tu regalo.";
+      const sectorAngle = 360 / sectores.length;
+      const targetIndex = sectores.indexOf(ganador);
+      const centerOfTarget = targetIndex * sectorAngle + sectorAngle / 2;
+      const desiredPointerAngle = 270;
 
-                const normalized = ((desiredPointerAngle - centerOfTarget) % 360 + 360) % 360;
-                ruleta.style.transition = 'none';
-                ruleta.style.transform = `rotate(${normalized}deg)`;
+      const vueltas = 5 + Math.floor(Math.random() * 2);
+      const finalRotation = vueltas * 360 + (desiredPointerAngle - centerOfTarget);
 
-                ruletaBtn.disabled = false;
-                ruletaBtn.style.opacity = 1;
-            }, 4200);
-        }
-    </script>
+      ruletaBtn.disabled = true;
+      ruletaBtn.style.opacity = 0.6;
+      resultado.textContent = '';
 
+      ruleta.style.transition = 'transform 4s cubic-bezier(0.33,1,0.68,1)';
+      ruleta.style.transform = `rotate(${finalRotation}deg)`;
+
+      setTimeout(() => {
+        resultado.innerHTML = premioTextos[ganador] + "<br><br>📸 Envía este pantallazo a <b>Tu hermano</b> para reclamar tu regalo.";
+
+        ruletaBtn.disabled = false;
+        ruletaBtn.style.opacity = 1;
+      }, 4200);
+    }
+  </script>
 </body>
-
 </html>
